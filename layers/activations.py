@@ -1,5 +1,5 @@
 import numpy as np
-from MLP.base_classes.activaton import Activation
+from base_classes.activaton import Activation
 
 
 class ReLU(Activation):

@@ -3,20 +3,20 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm.auto import tqdm
 
-from MLP.layers.dense import Dense
-from MLP.layers.activations import Tanh, Softmax
-from MLP.tools.losses import cross_entropy, cross_entropy_prime
-from MLP.tools.functions import one_hot, predict, get_accuracy, show_and_predict
+from layers.dense import Dense
+from layers.activations import Tanh, Softmax
+from tools.losses import cross_entropy, cross_entropy_prime
+from tools.functions import one_hot, predict, get_accuracy, show_and_predict
 
 
-data = pd.read_csv(r'C:/Users/sasha/Desktop/JUPYTER/Datasets/mnist/mnist_train.csv')
+data = pd.read_csv('Datasets/mnist_train.csv')
 
 X_train = data.drop(columns='label').to_numpy().T
 X_train = (X_train/ 255)
 Y_mnist = data['label'].to_numpy()
 Y_train = np.hstack([one_hot(elem, 10) for elem in Y_mnist])
 
-test_data = pd.read_csv(r'C:/Users/sasha/Desktop/JUPYTER/Datasets/mnist/mnist_test.csv')
+test_data = pd.read_csv('Datasets/mnist_test.csv')
 X_test = test_data.drop(columns='label').to_numpy().T
 X_test = (X_test/ 255)
 Y_mnist_test = test_data['label'].to_numpy()
@@ -45,7 +45,7 @@ for e in tqdm(range(epochs)):
         for layer in reversed(network):
             grad = layer.backward(grad, learning_rate)
 
-    error /= len(x)
+    error /= forward_data.shape[1]
     errors.append(error)
     print(f"epoch = {e}, error = {error}")
         

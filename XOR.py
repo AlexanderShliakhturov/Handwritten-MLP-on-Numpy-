@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-from MLP.layers.dense import Dense
-from MLP.layers.activations import Tanh
-from MLP.tools.losses import mse, mse_prime
+from layers.dense import Dense
+from layers.activations import Tanh
+from tools.losses import mse, mse_prime
 
 X = np.reshape([[0,0], [0,1], [1,0], [1,1]], (4,2,1))
 Y = np.reshape([[0], [1], [1], [0]], (4,1,1))

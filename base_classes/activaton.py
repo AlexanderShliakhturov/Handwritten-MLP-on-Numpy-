@@ -1,5 +1,5 @@
 import numpy as np
-from MLP.base_classes.layer import Layer
+from base_classes.layer import Layer
 
 class Activation(Layer):
     def __init__(self, activation, activation_prime):
